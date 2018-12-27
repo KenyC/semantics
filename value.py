@@ -2,7 +2,7 @@
 
 class TypeMismatch(Exception):
 	def __init__(self, rules, *types):
-		 Exception.__init__(self,"Types {} can't combine.\n Rules are: {}".format(" and ".join([str(t) for t in types]), rules))
+		 Exception.__init__(self,"Types {} can't combine.\n Rules are: {}".format(" and ".join([str(t) for t in types]), ",".join([str(r) for r in rules])))
 
 class Value:
 

@@ -60,8 +60,8 @@ class Universe:
 mod = Universe()
 
 # love: a classic love triangle between the first three protagonists of our model
-mod["love"] = [("Rosa", "Ahmed"), ("Ahmed", "Ren"), ("Ren", "Rosa")]
-love = mod.predicate("love")
+mod["loves"] = [("Rosa", "Ahmed"), ("Ahmed", "Ren"), ("Ren", "Rosa")]
+loves = mod.predicate("loves")
 
 # basic predicates
 mod["woman"] = ["Rosa", "Ren"]

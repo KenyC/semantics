@@ -12,6 +12,10 @@ class FA(Rule):
 	def combine_val(self, val1, val2):
 		return Value(val2.type[1], lambda g: val2.value(g)(val1.value(g)))
 
+
+	def __str__(self):
+		return "Functional Application"
+
 	
 class Abstraction(Rule):
 
@@ -19,8 +23,10 @@ class Abstraction(Rule):
 		return isinstance(type1, tuple) and (type1[0] == "binder")
 
 	def combine_val(self, val1, val2):
-		return Value((val1.type[1], val2.type), lambda g: lambda x: val2.value({**g, val1.value: x}))
+		return Value(Type((val1.type[1], val2.type)), lambda g: lambda x: val2.value({**g, val1.value: x}))
 
+	def __str__(self):
+		return "Lambda Abstraction"
 
 class PredicateModification(Rule):
 
@@ -35,5 +41,8 @@ class PredicateModification(Rule):
 			return val1 and val2
 		else:
 			return lambda x: self.conjoin(val1(x), val2(x), typeV[1])
+
+	def __str__(self):
+		return "PredicateModification"
 
 StdHK = [FA(), Abstraction(), PredicateModification()]

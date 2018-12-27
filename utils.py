@@ -1,11 +1,7 @@
 from type import Type
 
 def isTEnding(typeV):
-	return isinstance(typeV, Type) and (
-		(typeV.is_basic() and typeV.struct == "t")
-		or
-		(isTEnding(typeV[1]))
-		)
+	return isinstance(typeV, Type) and typeV.struct == "t" if typeV.is_basic() else	(isTEnding(typeV[1]))
 
 def currify(f, n):
 	if n == 1:

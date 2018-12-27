@@ -3,8 +3,11 @@ from type import Type
 from utils import currify
 from nonlogical import mod
 
-def binder(typeA, index):
-	return Value(type = ("binder", typeA), value = index)
+def binder(index, typeA = Type("e")):
+	return Value(typeV = ("binder", typeA), value = index)
+
+def pro(index, typeA = Type("e")):
+	return Value(typeV = typeA, value = lambda g: g[index])
 
 # Uncurrified version of every
 def every_unC(domain, g, pred1, pred2):
